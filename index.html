@@ -1,0 +1,229 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <title>IBD Puzzle Game</title>
+
+    <!-- css -->
+
+    <link rel="stylesheet" href="assets/fonts/fonts.css" />
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <!-- Welcome to ZIM at http://zimjs.com - Code Interactive Media Pizzazz! 	        -->
+
+    <!-- ZIM runs on the HTML Canvas powered by JavaScript and CreateJS http://createjs.com -->
+
+    <!-- Founded by Inventor Dan Zen - http://danzen.com - Canadian New Media Award Winner 	-->
+
+    <!-- ZIM is free to use. You can donate to help improve ZIM at http://zimjs.com/donate 	-->
+
+    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+
+    <script>
+      var zon = true; // set to false to turn off console messages from zim
+
+      var zns = false; // set to true to require zim namespace - eg. new zim.Frame()
+    </script>
+
+    <script src="https://d309knd7es5f10.cloudfront.net/zim_6.9.0.js"></script>
+
+    <!-- use zimjs.com/distill for minified individual functions! -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="assets/js/game.js"></script>
+
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+
+    <link
+      rel="icon"
+      type="image/vnd.microsoft.icon"
+      href="assets/images/favicon.ico"
+    />
+
+    <link
+      rel="shortcut icon"
+      type="image/vnd.microsoft.icon"
+      href="assets/images/favicon.ico"
+    />
+  </head>
+
+  <body>
+    <section id="login-page">
+      <div class="main-container">
+        <div class="login-bg"></div>
+
+        <div class="content">
+          <form class="login-form">
+            <div class="form-group game-name">
+              <img src="assets/images/game-name.png" alt="" />
+            </div>
+
+            <div class="form-group input-field">
+              <img src="assets/images/input-bg.png" alt="" />
+
+              <input
+                id="fullname"
+                onkeypress="validateFullName()"
+                placeholder="FULL NAME"
+                type="text"
+              />
+            </div>
+
+            <div class="form-group input-field">
+              <img src="assets/images/input-bg.png" alt="" />
+
+              <input id="email" type="email" placeholder="EMAIL" />
+            </div>
+
+            <div class="form-group">
+              <button type="button" class="login-btn">
+                <img src="assets/images/login-btn.png" alt="" />
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- start page -->
+
+    <section id="start-page">
+      <div class="main-container">
+        <div class="start-bg"></div>
+
+        <div class="content">
+          <div class="start-center">
+            <div class="form-group game-name">
+              <img src="assets/images/game-name.png" alt="" />
+            </div>
+
+            <div class="form-group">
+              <button type="button" class="start-btn" onclick="startGame()">
+                <img src="assets/images/start-btn.png" alt="" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- start page -->
+
+    <!-- <section id="game-page"> -->
+      <!-- <div class="main-container">
+        <div class="game-bg"></div>
+
+        <div class="content">
+          <div class="score-top">
+            <img src="assets/images/score-img.png" alt="" />
+
+            <div class="score-text"><span id="countPieces">0</span>/25</div>
+          </div>
+
+          <div class="countUp">
+            <img src="assets/images/countup-img.png" alt="" />
+
+            <span id="realtime">00:00:00</span>
+          </div>
+        </div>
+
+        <div class="game-container" id="game-container">
+<div>jfjf</div>
+        </div>
+      </div>
+
+      <button id="full-screen">
+        <img src="assets/images/full.png" alt="" />
+      </button> -->
+    <!-- </section> -->
+     <div id="game-page" style="display:none; width:100vw; height:100vh; margin:0; padding:0;">
+    
+    <!-- SIDEBAR -->
+    <aside id="sidebar" style="
+        height: 100vh;
+        background: #1a1a1a;
+        color: #fff;
+        padding: 20px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        z-index: 10;
+    ">
+        <h2 style="margin:0; color:#ffa500;">Puzzle Game</h2>
+
+        <div>
+            <div style="font-size:14px; opacity:.7;">Time</div>
+            <div id="realtime" style="font-size:28px; font-weight:bold;">0:00:00</div>
+        </div>
+
+        <div>
+            <div style="font-size:14px; opacity:.7;">Pieces Placed</div>
+            <div style="font-size:28px; font-weight:bold;">
+                <span id="countPieces">0</span>
+            </div>
+        </div>
+
+        <button id="restart-btn" style="
+            padding: 1rem 2rem;
+            background: #ffa500;
+            color: #000;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        " onclick="location.reload()">Restart</button>
+    </aside>
+
+    <!-- CANVAS HOLDER -->
+    <div id="canvas-holder" style="
+        flex: 1;
+        height: 100vh;
+        position: relative;
+        background: #000;
+        overflow: hidden;
+        padding: 0.5rem;
+    "></div>
+
+</div>
+
+    <!-- leader page -->
+
+    <section id="leader-page">
+      <div class="main-container">
+        <div class="leader-bg"></div>
+
+        <div class="content">
+          <div class="leader-board">
+            <h2>leaderboard</h2>
+
+            <div class="users" id="users-list">
+            </div>
+
+            <div class="user" style="display: none">
+              <span class="username">username</span>
+
+              <span class="user-score">500</span>
+            </div>
+          </div>
+
+          <div class="timerDown">
+            <img src="assets/images/timer-img.png" alt="" />
+
+            <div class="time">60</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- canvas with id="myCanvas" is made by zim Frame -->
+
+    <script src="assets/js/main.js"></script>
+
+    <script src="assets/js/ajax.js"></script>
+  </body>
+</html>
