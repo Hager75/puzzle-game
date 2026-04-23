@@ -25,6 +25,9 @@ function startCountDown(mins, timerContainer) {
     }, 1000);
 }
 
+window.addEventListener('touchstart', (e) => {
+    console.log('✅ TOUCH DETECTED', e.touches.length, e.target);
+}, { passive: false });
 
 // set width and height window
 // let windowWidth = $(window).width();
@@ -130,14 +133,23 @@ function startGame() {
         // Make sure CreateJS touch is on (ZIM does this, but be explicit)
         if (createjs.Touch.isSupported()) {
             createjs.Touch.enable(stage, false, true); // (stage, singleTouch=false, allowDefault=true)
+            console.log('✅ CreateJS Touch ENABLED');
+        } else {
+            console.log('❌ CreateJS Touch NOT SUPPORTED');
+
         }
-        const canvas = frame.canvas;
-        if (canvas) {
-            canvas.style.touchAction = 'none';
-            ['touchstart', 'touchmove', 'touchend'].forEach(ev => {
-                canvas.addEventListener(ev, e => e.preventDefault(), { passive: false });
-            });
-        }
+        // const canvas = frame.canvas;
+        // if (canvas) {
+        //     canvas.style.touchAction = 'none';
+        //     ['touchstart', 'touchmove', 'touchend'].forEach(ev => {
+        //         canvas.addEventListener(ev, e => e.preventDefault(), { passive: false });
+        //     });
+        //     canvas.style.touchAction = 'none';
+        //     canvas.style.msTouchAction = 'none';
+        //     canvas.style.webkitUserSelect = 'none';
+        //     canvas.style.userSelect = 'none';
+
+        // }
 
         let puzzleX;
         let puzzleY;
