@@ -3,39 +3,17 @@
 <html>
   <head>
     <meta charset="utf-8" />
-
     <title>IBD Puzzle Game</title>
-
-    <!-- css -->
-
     <link rel="stylesheet" href="assets/fonts/fonts.css" />
-
     <link rel="stylesheet" href="assets/css/style.css" />
-
-    <!-- Welcome to ZIM at http://zimjs.com - Code Interactive Media Pizzazz! 	        -->
-
-    <!-- ZIM runs on the HTML Canvas powered by JavaScript and CreateJS http://createjs.com -->
-
-    <!-- Founded by Inventor Dan Zen - http://danzen.com - Canadian New Media Award Winner 	-->
-
-    <!-- ZIM is free to use. You can donate to help improve ZIM at http://zimjs.com/donate 	-->
-
     <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-
     <script>
       var zon = true; // set to false to turn off console messages from zim
-
       var zns = false; // set to true to require zim namespace - eg. new zim.Frame()
     </script>
 
     <script src="https://d309knd7es5f10.cloudfront.net/zim_6.9.0.js"></script>
-
-    <!-- use zimjs.com/distill for minified individual functions! -->
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <script src="assets/js/game.js"></script>
-
     <meta name="viewport" content="width=device-width, user-scalable=no" />
 
     <link
@@ -51,179 +29,308 @@
     />
   </head>
 
-  <body>
-    <section id="login-page">
-      <div class="main-container">
-        <div class="login-bg"></div>
+  <body id="main-body">
+        <!-- loader  -->
+    <div id="loader-wrapper">
+      <div id="loader"></div>
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+    </div>
 
+    <section id="login-page" class="login-section">
+      <div class="content">
+        <div class="left">
+          <img src="assets/images/game final-05.png" alt="preview" />
+        </div>
+        <div class="right">
+          <div>
+            <div class="login-title">PUT YOUR NAME</div>
+            <div class="login-title">TO BEGIN THE GAME</div>
+            <form id="startForm">
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  id="username"
+                  placeholder="USERNAME"
+                  autocomplete="off"
+                />
+                <img src="assets/images/checked.svg" class="input-icon" />
+              </div>
+
+              <span class="error" id="errorMsg"></span>
+
+              <button type="submit" class="start-btn">
+                <img src="assets/images/start-btn.svg" alt="start" />
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        <div class="footer-left">
+          <div class="footer-img-wrap">
+            <img src="assets/images/logo-3.svg" alt="logo" />
+          </div>
+          <div class="footer-img-wrap">
+            <img src="assets/images/logo-1.svg" alt="logo" />
+          </div>
+          <div class="footer-img-wrap">
+            <img src="assets/images/new-logo.png" alt="logo" />
+          </div>
+          <div class="footer-img-wrap">
+            <img src="assets/images/missing-logo.svg" alt="logo" />
+          </div>
+        </div>
+        <div class="footer-right">
+          <div class="footer-img-wrap">
+            <img src="assets/images/msd-logo.svg" alt="MSD-logo" />
+          </div>
+        </div>
+      </footer>
+    </section>
+
+    <!--  game-page -->
+    <div id="game-page" class="game-page">
+      <!-- SIDEBAR -->
+      <aside id="sidebar" class="sidebar">
+        <div class="header">
+          <ol class="title-wrap">
+            <li>BUILD THE</li>
+            <li>PUZZLE TO</li>
+            <li>DISCOVER</li>
+          </ol>
+          <ol class="subtitle-wrap">
+            <li>You Have 3 Minutes to</li>
+            <li>Complete the Puzzle</li>
+          </ol>
+        </div>
+        <div class="timer">
+          <div class="timer__title">Time</div>
+          <div id="realtime" class="timer__mins">02:00</div>
+          <div class="preview-wrap w-100">
+            <img
+              src="assets/images/preview.svg"
+              alt=""
+              srcset=""
+              class="w-100"
+            />
+          </div>
+        </div>
+
+        <div class="logo-wrap">
+          <img src="assets/images/msd-logo.svg" alt="msd-logo" srcset="" />
+        </div>
+      </aside>
+
+      <!-- CANVAS HOLDER -->
+      <div id="canvas-holder" class="canvas-holder"></div>
+    </div>
+
+    <section class="info-page">
+      <div class="info-container">
+        <div class="nav">
+          <div class="next">
+            <img src="assets/images/next-btn.svg" alt="" srcset="" />
+          </div>
+        </div>
+        <div class="info-label"></div>
+
+        <div class="grid">
+          <!-- ROW 1: LOGOS -->
+          <div class="logo-wrap">
+            <img src="assets/images/Asset 15.png" alt="" />
+          </div>
+          <div class="logo-wrap">
+            <img src="assets/images/Asset 18.svg" alt="" />
+          </div>
+          <div class="logo-wrap">
+            <img src="assets/images/Asset 11.png" alt="" />
+          </div>
+
+          <!-- ROW 2: IMAGES -->
+          <div class="img-wrap">
+            <img src="assets/images/img-3-07.png" alt="" />
+          </div>
+          <div class="img-wrap">
+            <img src="assets/images/img-2-06.png" alt="" />
+          </div>
+          <div class="img-wrap">
+            <img src="assets/images/img-1-05.png" alt="" />
+          </div>
+
+          <!-- ROW 3: TEXTS -->
+          <div class="text-wrap">
+            <img src="assets/images/Asset 14.svg" alt="" />
+          </div>
+          <div class="text-wrap">
+            <img src="assets/images/Asset 17.svg" alt="" />
+          </div>
+          <div class="text-wrap">
+            <img src="assets/images/Asset 16.svg" alt="" />
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        <div class="ref">
+          <h6 class="ref-title">References</h6>
+          <ol class="ref-list">
+            <li>Vaneuvance approved SPC.</li>
+            <li>Enflonsia Local SPC.</li>
+            <li>
+              Cheng L, Wang Y, Du J. Human Papillomavirus Vaccines: An Updated
+              Review. Vaccines (Basel). 2020;8(3):391.
+            </li>
+            <li>
+              ABCs Bact Facts Interactive Data Dashboard. SPN serotypes
+              1998-2023. Centers for Disease Control and Prevention. August 21,
+              2025. Accessed April 2026.<br />
+              <a
+                href="https://www.cdc.gov/abcs/bact-facts/data-dashboard.html"
+                target="_blank"
+              >
+                https://www.cdc.gov/abcs/bact-facts/data-dashboard.html
+              </a>
+            </li>
+            <li>
+              1998-2025 serotype data for invasive pneumococcal disease cases by
+              age group from Active Bacterial Core Surveillance. Centers for
+              Disease Control and Prevention. Updated March 14, 2025. Accessed
+              April 2026.<br />
+              <a
+                href="https://data.cdc.gov/Public-Health-Surveillance/1998-2023-Serotype-Data-for-Invasive-Pneumococcal-/qvzb-qs6p/about_data"
+                target="_blank"
+              >
+                https://data.cdc.gov/Public-Health-Surveillance/1998-2023-Serotype-Data-for-Invasive-Pneumococcal-/qvzb-qs6p/about_data
+              </a>
+            </li>
+            <li>CAPVAXIVE™. Local Summary of Product Characteristics.</li>
+          </ol>
+        </div>
+        <div class="footer-right">
+          <div class="footer-img-wrap">
+            <img src="assets/images/msd-logo.svg" alt="MSD-logo" />
+          </div>
+        </div>
+      </footer>
+    </section>
+
+    <section class="qr-container">
+      <div class="nav">
+        <div class="prev">
+          <img src="assets/images/prev-btn.svg" alt="" srcset="" />
+        </div>
+        <div class="next">
+          <img src="assets/images/next-btn.svg" alt="" srcset="" />
+        </div>
+      </div>
+      <div class="qr-bg">
+        <div class="qr-list">
+          <div class="qr-img-wrap">
+            <img src="assets/images/Asset 2-last-2-01.svg" alt="" srcset="" />
+          </div>
+          <div class="qr-img-wrap">
+            <img src="assets/images/Asset 3-last-2-01.svg" alt="" srcset="" />
+          </div>
+          <div class="qr-img-wrap">
+            <img src="assets/images/Asset 1-last-2-01.svg" alt="" srcset="" />
+          </div>
+          <div class="qr-img-wrap">
+            <img src="assets/images/Asset 5-last--2-01.svg" alt="" srcset="" />
+          </div>
+        </div>
+        <footer class="legal-footer">
+          <div class="legal-container">
+            <p class="legal-text">
+              Copyright @ 2026 Merck & Co., Inc., Rahway, NU, USA and its
+              affiliates. All rights reserved.
+            </p>
+
+            <p class="legal-meta">AE-PVC-00086 Expiry: 15-4-2028</p>
+
+            <p class="legal-text">
+              To report an adverse event, product quality complaint, or other
+              reportable information, or if you have a medical inquiry, please
+              contact:
+              <span>Tel: <a href="tel:+42691009714">+42 69100 9714</a></span>
+              <span>Fax: <a href="fax:+42692049714">+42 69204 9714</a></span>
+              <span
+                >Email:
+                <a href="mailto:DPOC.GULF@MSD.COM">DPOC.GULF@MSD.COM</a></span
+              >
+            </p>
+          </div>
+          <div class="footer-img-wrap">
+            <img src="assets/images/msd-logo.svg" alt="MSD-logo" />
+          </div>
+        </footer>
+      </div>
+    </section>
+
+    <section id="score-page" class="score-page">
+      <!-- <div class="score-container"> -->
+        <div class="nav score-nav">
+          <div class="prev">
+            <img src="assets/images/prev-btn.svg" alt="" srcset="" />
+          </div>
+          <div class="home">
+            <img src="assets/images/home-btn.svg" alt="" srcset="" />
+          </div>
+        </div>
         <div class="content">
-          <form class="login-form">
-            <div class="form-group game-name">
-              <img src="assets/images/game-name.png" alt="" />
-            </div>
-
-            <div class="form-group input-field">
-              <img src="assets/images/input-bg.png" alt="" />
-
-              <input
-                id="fullname"
-                onkeypress="validateFullName()"
-                placeholder="FULL NAME"
-                type="text"
-              />
-            </div>
-
-            <div class="form-group input-field">
-              <img src="assets/images/input-bg.png" alt="" />
-
-              <input id="email" type="email" placeholder="EMAIL" />
-            </div>
-
-            <div class="form-group">
-              <button type="button" class="login-btn">
-                <img src="assets/images/login-btn.png" alt="" />
+          <div class="left">
+            <img src="assets/images/game final-05.png" alt="preview" />
+          </div>
+          <div class="right">
+            <div>
+              <div class="score__title">USERNAME</div>
+              <div class="user-name">Nour Mohamed</div>
+              <div class="userscore-container">
+                <div class="userscore--percentage">75%</div>
+                <div class="userscore">
+                  <div class="userscore--txt">score</div>
+                  <div class="userscore--number">0000</div>
+                </div>
+              </div>
+              <button type="button" class="restart-btn">
+                <img src="assets/images/restart-btn.svg" alt="restart" />
               </button>
             </div>
-          </form>
+          </div>
         </div>
-      </div>
+      <!-- </div> -->
+      <footer class="footer">
+        <div class="footer-left">
+          <div class="footer-img-wrap">
+            <img src="assets/images/logo-3.svg" alt="logo" />
+          </div>
+          <div class="footer-img-wrap">
+            <img src="assets/images/logo-1.svg" alt="logo" />
+          </div>
+          <div class="footer-img-wrap">
+            <img src="assets/images/new-logo.png" alt="logo" />
+          </div>
+          <div class="footer-img-wrap">
+            <img src="assets/images/missing-logo.svg" alt="logo" />
+          </div>
+        </div>
+        <div class="footer-right">
+          <div class="footer-img-wrap">
+            <img src="assets/images/msd-logo.svg" alt="MSD-logo" />
+          </div>
+        </div>
+      </footer>
     </section>
-
-    <!-- start page -->
-
-    <section id="start-page">
-      <div class="main-container">
-        <div class="start-bg"></div>
-
-        <div class="content">
-          <div class="start-center">
-            <div class="form-group game-name">
-              <img src="assets/images/game-name.png" alt="" />
-            </div>
-
-            <div class="form-group">
-              <button type="button" class="start-btn" onclick="startGame()">
-                <img src="assets/images/start-btn.png" alt="" />
-              </button>
-            </div>
-          </div>
+    <!-- rotate msg  -->
+    <div class="rotateMessage">
+      <div class="rotateMessage-container">
+        <div class="rotateMessage-content">
+          <div class="rotateMessage-text">Please rotate to landscape mood</div>
         </div>
       </div>
-    </section>
-
-    <!-- start page -->
-
-    <!-- <section id="game-page"> -->
-      <!-- <div class="main-container">
-        <div class="game-bg"></div>
-
-        <div class="content">
-          <div class="score-top">
-            <img src="assets/images/score-img.png" alt="" />
-
-            <div class="score-text"><span id="countPieces">0</span>/25</div>
-          </div>
-
-          <div class="countUp">
-            <img src="assets/images/countup-img.png" alt="" />
-
-            <span id="realtime">00:00:00</span>
-          </div>
-        </div>
-
-        <div class="game-container" id="game-container">
-<div>jfjf</div>
-        </div>
-      </div>
-
-      <button id="full-screen">
-        <img src="assets/images/full.png" alt="" />
-      </button> -->
-    <!-- </section> -->
-     <div id="game-page" style="display:none; width:100vw; height:100vh; margin:0; padding:0;">
-    
-    <!-- SIDEBAR -->
-    <aside id="sidebar" style="
-        height: 100vh;
-        background: #1a1a1a;
-        color: #fff;
-        padding: 20px;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        z-index: 10;
-    ">
-        <h2 style="margin:0; color:#ffa500;">Puzzle Game</h2>
-
-        <div>
-            <div style="font-size:14px; opacity:.7;">Time</div>
-            <div id="realtime" style="font-size:28px; font-weight:bold;">0:00:00</div>
-        </div>
-
-        <div>
-            <div style="font-size:14px; opacity:.7;">Pieces Placed</div>
-            <div style="font-size:28px; font-weight:bold;">
-                <span id="countPieces">0</span>
-            </div>
-        </div>
-
-        <button id="restart-btn" style="
-            padding: 1rem 2rem;
-            background: #ffa500;
-            color: #000;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-        " onclick="location.reload()">Restart</button>
-    </aside>
-
-    <!-- CANVAS HOLDER -->
-    <div id="canvas-holder" style="
-        flex: 1;
-        height: 100vh;
-        position: relative;
-        background: #000;
-        overflow: hidden;
-        padding: 0.5rem;
-    "></div>
-
-</div>
-
-    <!-- leader page -->
-
-    <section id="leader-page">
-      <div class="main-container">
-        <div class="leader-bg"></div>
-
-        <div class="content">
-          <div class="leader-board">
-            <h2>leaderboard</h2>
-
-            <div class="users" id="users-list">
-            </div>
-
-            <div class="user" style="display: none">
-              <span class="username">username</span>
-
-              <span class="user-score">500</span>
-            </div>
-          </div>
-
-          <div class="timerDown">
-            <img src="assets/images/timer-img.png" alt="" />
-
-            <div class="time">60</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    </div>
     <!-- canvas with id="myCanvas" is made by zim Frame -->
-
+    <script src="assets/js/variables.js"></script>
+    <script src="assets/js/game.js"></script>
     <script src="assets/js/main.js"></script>
-
-    <script src="assets/js/ajax.js"></script>
   </body>
 </html>
