@@ -127,6 +127,18 @@ function startGame() {
     frame.on("ready", function () {
         zog("ready from ZIM Frame");
         const stage = frame.stage;
+        // Make sure CreateJS touch is on (ZIM does this, but be explicit)
+        if (createjs.Touch.isSupported()) {
+            createjs.Touch.enable(stage, false, true); // (stage, singleTouch=false, allowDefault=true)
+        }
+        const canvas = frame.canvas;
+        if (canvas) {
+            canvas.style.touchAction = 'none';
+            ['touchstart', 'touchmove', 'touchend'].forEach(ev => {
+                canvas.addEventListener(ev, e => e.preventDefault(), { passive: false });
+            });
+        }
+
         let puzzleX;
         let puzzleY;
 
