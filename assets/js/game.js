@@ -39,6 +39,7 @@ function displayInfoPage(isWinner) {
 }
 
 function startGame() {
+    bodyElement.classList.remove("loaded");
     startCountDown(mins, timer);
     // ---- Get size of canvas holder (beside the sidebar) ----
     const holder = document.getElementById('canvas-holder');
@@ -266,6 +267,11 @@ function startGame() {
 
             con.addTo(stage);
             stage.update();
+            requestAnimationFrame(() => {
+                setTimeout(()=>{
+                 bodyElement.classList.add("loaded");
+                }, 100); // small delay ensures canvas is painted
+            });
 
         }); // complete
 
