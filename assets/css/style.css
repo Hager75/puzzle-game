@@ -51,21 +51,21 @@ body {
 .qr-container {
   display: none;
   flex-direction: column;
-  height: 100%;
+  height: 100dvh;
   align-items: center;
-  padding: 3rem;
+  padding: 8dvh;
   background: linear-gradient(to left, var(--primary-color), var(--secondary-color));
 }
 
 .qr-bg {
   width: 100%;
-  max-height: 100%;
+  max-height: 75dvh;
   display: flex;
   align-items: center;
   flex-direction: column;
   background-color: white;
   border-radius: 2rem;
-  margin: 3rem;
+  margin: 3dvh 3rem;
   flex: 1;
   justify-content: center;
   padding-top: 2rem;
@@ -86,7 +86,7 @@ body {
 }
 
 .qr-list .qr-img-wrap {
-  width: 18%;
+  width: 15%;
   max-width: 300px;
 }
 
@@ -98,6 +98,7 @@ body {
   justify-content: center;
   padding: 20px;
   background: linear-gradient(to left, var(--primary-color), var(--secondary-color));
+  /* max-height: 80dvh; */
 }
 
 .score-page .content {
@@ -125,6 +126,7 @@ body {
   flex: 1;
   display: flex;
   justify-content: center;
+  max-width: 100dvh;
 }
 
 .left img {
@@ -254,7 +256,7 @@ body {
 }
 
 .userscore-container {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: space-between;
 }
@@ -433,7 +435,7 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  /* max-width: 150px; */
+  max-width: 35dvh;
 }
 
 .info-page .img-wrap {
@@ -551,7 +553,7 @@ body {
 
   .info-page .text-wrap {
     /* max-height: 18vh; */
-    max-width: 54%;
+    max-width: 33%;
   }
 
   .info-page .grid {
@@ -1411,7 +1413,6 @@ section#game-page .score-top .score-text {
 #canvas-holder canvas,
 #myCanvas {
   touch-action: none;
-  /* <-- THE critical one */
   -ms-touch-action: none;
   -webkit-tap-highlight-color: transparent;
   user-select: none;

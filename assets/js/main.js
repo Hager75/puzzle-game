@@ -44,9 +44,11 @@ form.addEventListener("submit", function (e) {
   e.preventDefault();
 
   const username = usernameInput.value.trim();
-
   if (username.length < 2) {
     errorMsg.textContent = "Username must be at least 2 characters";
+    return;
+  }else if (username.length > 30){
+    errorMsg.textContent = "Username must be at most 30 characters";
     return;
   }
 
@@ -59,6 +61,7 @@ form.addEventListener("submit", function (e) {
     gamePage.style.display = "flex";
     gamePage.classList.add("fade-in");
     currentPage++;
+    userNameElement.innerHTML = username;
     startGame();
   }, 400);
 

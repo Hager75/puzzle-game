@@ -13,6 +13,7 @@ const nextBtn = document.querySelectorAll(".next");
 const prevBtn = document.querySelectorAll(".prev");
 const homeBtn = document.querySelector(".home");
 const restartBtn = document.querySelector(".restart-btn");
+const userNameElement = document.querySelector(".user-name");
 const mins = 2;
 const resultText = {
     win: "You Win! 🎉",
