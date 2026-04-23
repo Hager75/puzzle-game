@@ -448,16 +448,13 @@ max-height: 10dvh;
 
 /* Optional: cap logo row height so it doesn't eat space */
 .info-page .logo-wrap {
-  max-height: 15vh;
+  max-height: 15dvh;
 }
 
 .info-page .logo-wrap img {
   max-height: 100%;
 }
 
-.info-page .text-wrap {
-  /* max-height: 12vh; */
-}
 
 .info-page .footer {
   /* flex: 0 0 auto; */
@@ -500,12 +497,9 @@ max-height: 10dvh;
   }
 
   .info-page .logo-wrap {
-    max-height: 8vh;
+    max-height: 8dvh;
   }
 
-  .text-wrap {
-    /* max-height: 28vh; */
-  }
 
   .info-page .footer {
     padding: 8px 16px;
@@ -526,7 +520,7 @@ max-height: 10dvh;
 /* Very short landscape screens */
 @media (max-height: 500px) {
   .info-page .logo-wrap {
-    max-height: 8vh;
+    max-height: 8dvh;
   }
 
   .info-page .text-wrap {
@@ -745,7 +739,7 @@ section#login-page {
 }
 
 #login-page .game-name img {
-  max-height: 35vh;
+  max-height: 35dvh;
   max-width: 100%;
   margin: auto;
 }
@@ -801,7 +795,7 @@ section#start-page {
 }
 
 #start-page .game-name img {
-  max-height: 50vh;
+  max-height: 50dvh;
   max-width: 100%;
   margin: auto;
 }
@@ -1055,124 +1049,6 @@ section#game-page .score-top .score-text {
 
 
 
-
-/* leader page */
-section#leader-page {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: none;
-}
-
-.leader-bg {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  min-height: 100dvh;
-  background-image: url(../images/leader-bg.png);
-  background-position: bottom right;
-  background-repeat: no-repeat;
-  background-size: cover;
-  /* animation: animatedBackground 5s linear infinite alternate; */
-}
-
-#leader-page .leader-board {
-  max-width: 40vw;
-  margin: auto;
-  padding: 1rem;
-  background-color: #ac7dd3;
-  border-radius: .7rem;
-  width: 92%;
-}
-
-#leader-page .leader-board h2 {
-  color: #220642;
-  font-family: "AktivGrotesk Bold";
-  text-align: center;
-  text-transform: uppercase;
-
-}
-
-#leader-page .leader-board .users {
-  max-width: 85%;
-  margin: auto;
-  color: #FFF;
-  font-family: "AktivGrotesk Bold";
-  margin-bottom: 1rem;
-  height: 40vh;
-  overflow: hidden;
-  overflow-y: auto;
-  padding-right: 10px;
-}
-
-#leader-page .leader-board .users>div {
-  display: flex;
-  font-size: 1.2rem;
-  margin-bottom: .4rem;
-  padding: .4rem .5rem;
-  display: flex;
-  justify-content: space-between;
-}
-
-#leader-page .leader-board .users>div.active {
-  background-color: #220642;
-}
-
-
-#leader-page .leader-board .users>div .user-score {
-  margin-right: .2rem;
-  color: #ddc010;
-}
-
-#leader-page .leader-board .users>div .username {
-  margin-left: .2rem;
-}
-
-#leader-page .next-btn {
-  display: block;
-  margin: auto;
-  outline: 0;
-  box-shadow: none;
-  border: none;
-  background: #ddc010;
-  text-transform: uppercase;
-  color: #220642;
-  cursor: pointer;
-  font-family: "AktivGrotesk Bold";
-  border-radius: 5px;
-  padding: .5rem 1rem 0.3rem;
-  font-size: 1.1rem;
-  line-height: 1.1rem;
-}
-
-#leader-page .timerDown {
-  position: absolute;
-  bottom: 15%;
-  right: 12%;
-  max-width: 150px;
-  width: 100%;
-  height: fit-content;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#leader-page .timerDown .time {
-  position: absolute;
-  color: #FFF;
-  margin: auto;
-  font-family: 'AktivGrotesk Bold';
-  font-size: 1.4rem;
-  margin-top: 5%;
-}
-
-#leader-page .timerDown img {
-  max-width: 100%;
-  max-height: 25vh;
-}
-
-
 /* canvas */
 #myCanvas {
   background-color: transparent !important;
@@ -1197,56 +1073,8 @@ section#leader-page {
   }
 }
 
-@media(min-width:768px) {
-  #leader-page .timerDown .time {
-    font-size: 1.8rem;
-  }
-}
-
-
-@media(max-width:1024px) and (orientation:portrait) {
-  #leader-page .leader-board {
-    max-width: 50vw;
-  }
-
-  #leader-page .leader-board .users {
-    height: 35vh;
-  }
-
-  #leader-page .timerDown {
-    bottom: 5vh;
-  }
-}
-
-@media(max-width:768px) and (orientation:portrait) {
-  #leader-page .leader-board {
-    max-width: 90vw;
-  }
-
-  #leader-page .timerDown {
-    bottom: 4vh;
-    right: 4%;
-  }
-
-  #leader-page .timerDown img {
-    max-height: 19vh;
-  }
-
-  #leader-page .leader-board {
-    padding: .5rem 0;
-  }
-}
-
-
 
 @media(max-width:860px) and (orientation:landscape) {
-  #leader-page .timerDown .time {
-    font-size: 1.2rem;
-  }
-
-  #leader-page .timerDown img {
-    max-height: 26vh;
-  }
 
   section#game-page .score-top,
   section#game-page .countUp {
@@ -1276,7 +1104,7 @@ section#leader-page {
   }
 
   #login-page .game-name img {
-    max-height: 35vh;
+    max-height: 35dvh;
   }
 
   .form-group input {
