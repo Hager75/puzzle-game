@@ -288,12 +288,12 @@ body {
   align-items: center;
 }
 
-.score-page .footer-right {
+/* .score-page .footer-right {
   max-width: 100%;
   display: flex;
   width: 100%;
   justify-content: flex-end;
-}
+} */
 
 .login-section .footer-img-wrap {
   width: 16%;
@@ -301,8 +301,10 @@ body {
 }
 
 .score-page .footer-img-wrap {
-  max-width: 18%;
-  width: 195px;
+  /* max-width: 18%;
+  width: 195px; */
+   width: 16%;
+  max-width: 180px;
 }
 
 .legal-footer .footer-img-wrap {
@@ -322,15 +324,12 @@ body {
   max-width: 24%;
 }
 
-.login-section .footer-right .footer-img-wrap {
+.login-section .footer-right .footer-img-wrap, .score-page .footer-right .footer-img-wrap{
   max-width: 260px;
   margin-left: auto;
-  width: 38%;
+  width: 42%;
 }
 
-.score-page .footer-right .footer-img-wrap {
-  width: 11%;
-}
 
 .login-section .footer-img-wrap img,
 .score-page .footer-img-wrap img {
@@ -441,12 +440,21 @@ body {
 .info-page .img-wrap {
   width: 85%;
   height: 100%;
+  max-height: 70dvh;
   min-height: 0;
-  /* allow shrink */
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+}
+
+.info-page .img-wrap img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
 }
 
 
@@ -979,14 +987,12 @@ section#start-page {
   font-family: var(--font-bold);
 }
 
-.ref-list {
+.ref-list{
   padding-left: 0.5rem;
 }
-
 .ref-list li {
-  /* margin-bottom: 0.75rem; */
-  /* font-size: 0.95rem; */
-  /* ~15px */
+  font-family: var(--font-normal);
+  font-size: 0.4rem;
 }
 
 .ref a {
@@ -1231,7 +1237,7 @@ section#game-page .score-top .score-text {
 
 .legal-container {
   max-width: 70%;
-  font-size: 0.5rem;
+  font-size: 0.4rem;
   line-height: 1.1;
   text-align: start;
 }
