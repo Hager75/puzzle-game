@@ -5,7 +5,7 @@ nextBtn.forEach((btn) => {
       qrPage.style.display = "flex";
       qrPage.classList.add("fade-in");
       currentPage++;
-    } else if (currentPage === 4){
+    } else if (currentPage === 4) {
       qrPage.style.display = "none";
       scorePage.style.display = "flex";
       scorePage.classList.add("fade-in");
@@ -22,7 +22,7 @@ prevBtn.forEach((btn) => {
       qrPage.style.display = "none";
       infoPage.classList.add("fade-in");
       currentPage--;
-    } else if (currentPage === 5){
+    } else if (currentPage === 5) {
       infoPage.style.display = "none";
       qrPage.style.display = "flex";
       scorePage.style.display = "none";
@@ -64,10 +64,42 @@ form.addEventListener("submit", function (e) {
 
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  setTimeout(function () {
-    bodyElement.classList.add("loaded");
-  }, 1000);
+function preloadAssets() {
+  return new Promise((resolve) => {
+    let loaded = 0;
+    const total = ASSETS.length;
+
+    if (total === 0) resolve();
+
+    ASSETS.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+
+      img.onload = img.onerror = () => {
+        loaded++;
+
+        // optional progress
+        // console.log(`Loaded: ${loaded}/${total}`);
+
+        if (loaded === total) {
+          resolve();
+        }
+      };
+    });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    await preloadAssets();
+
+    setTimeout(function () {
+      bodyElement.classList.add("loaded");
+    }, 1000);
+  } catch (e) {
+    console.error("Preload failed", e);
+    loader.classList.add("loaded"); // fail-safe
+  }
 });
 
 
