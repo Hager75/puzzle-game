@@ -15,7 +15,7 @@ function startCountDown(mins, timerContainer) {
             timerContainer.textContent = "00:00";
             clearInterval(interval);
             if (countPieces !== totalPieces) {
-                displayInfoPage(false);
+                displayInfoPage(false); // lose
             }
             // end game
         } else {
@@ -25,84 +25,10 @@ function startCountDown(mins, timerContainer) {
     }, 1000);
 }
 
-window.addEventListener('touchstart', (e) => {
-    console.log('✅ TOUCH DETECTED', e.touches.length, e.target);
-}, { passive: false });
-
-// set width and height window
-// let windowWidth = $(window).width();
-// let windowHeight = $(window).height();
-// let width = 1366;
-// let height = 768;
-// $(window).on('resize', function () {
-//     windowWidth = $(window).width();
-//     windowHeight = $(window).height();
-//     if (windowHeight > windowWidth) {
-//         width = 768;
-//         height = 1366;
-//     }
-// })
-
-
-// start sounds
-
-// let gameSound = new Audio('assets/sounds/gameSound.mp3');;
-// function startGameSound() {
-//     // gameSound.play();
-//     // // start countDown
-//     // gameSound.addEventListener('ended', function () {
-//     //     this.play();
-//     // }, false);
-// }
-
 const cardSound = new Audio('assets/sounds/cardSound.mp3');
 function startCardSound() {
     cardSound.play();
 }
-
-
-
-function toggleFullScreen() {
-    let gamePage = document.getElementById('game-page');
-    let puzzleCanvas = document.getElementById('myCanvas');
-    gamePage.appendChild(puzzleCanvas);
-
-    // if (!document.fullscreenElement) {
-    //     gamePage.requestFullscreen();
-    // } else {
-    //     if (document.exitFullscreen) {
-    //         gamePage.exitFullscreen();
-    //     }
-    // }
-
-
-    if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen();
-    } else {
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        }
-    }
-
-
-}
-
-// Full screen
-
-function iOS() {
-    return [
-        'iPad Simulator',
-        'iPhone Simulator',
-        'iPod Simulator',
-        'iPad',
-        'iPhone',
-        'iPod'
-    ].includes(navigator.platform)
-        // iPad on iOS 13 detection
-        || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
-}
-
-iOS() ? $('#full-screen').hide() : $('#full-screen').show();
 
 function displayInfoPage(isWinner) {
     gamePage.style.display = "none";
@@ -133,23 +59,7 @@ function startGame() {
         // Make sure CreateJS touch is on (ZIM does this, but be explicit)
         if (createjs.Touch.isSupported()) {
             createjs.Touch.enable(stage, false, true); // (stage, singleTouch=false, allowDefault=true)
-            console.log('✅ CreateJS Touch ENABLED');
-        } else {
-            console.log('❌ CreateJS Touch NOT SUPPORTED');
-
-        }
-        // const canvas = frame.canvas;
-        // if (canvas) {
-        //     canvas.style.touchAction = 'none';
-        //     ['touchstart', 'touchmove', 'touchend'].forEach(ev => {
-        //         canvas.addEventListener(ev, e => e.preventDefault(), { passive: false });
-        //     });
-        //     canvas.style.touchAction = 'none';
-        //     canvas.style.msTouchAction = 'none';
-        //     canvas.style.webkitUserSelect = 'none';
-        //     canvas.style.userSelect = 'none';
-
-        // }
+        } 
 
         let puzzleX;
         let puzzleY;
@@ -323,7 +233,7 @@ function startGame() {
                             countPieces++;
                             startCardSound();
                             if (countPieces == totalPieces) {
-                                displayInfoPage(true);
+                                displayInfoPage(true); // winner
                             }
                             stage.update();
                         }
